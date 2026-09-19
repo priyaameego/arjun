@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─────────────────────────────────── */
+:root {
+  --color-red: #C83A2B;
+  --color-red-dark: #A92E22;
+  --color-gold: #C8A45D;
+  --color-charcoal: #171717;
+  --color-dark: #2C2C2C;
+  --color-grey: #6B6B6B;
+  --color-light-grey: #F5F3F0;
+  --color-white: #FFFFFF;
+  --color-cream: #F8F7F4;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Montserrat', system-ui, sans-serif;
+
+  --transition-base: 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-cream);
+  overflow-x: hidden;
+}
+
+/* ─── Typography Base ────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.75;
+  color: var(--color-grey);
+}
+
+/* ─── Selection ──────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-red);
+  color: white;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-red);
+  border-radius: 3px;
+}
+
+/* ─── Utility Classes ────────────────────────────────────────── */
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-red);
+}
+
+.display-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--color-charcoal);
+}
+
+.accent-line {
+  display: block;
+  height: 2px;
+  background-color: var(--color-red);
+  transform-origin: left center;
+}
+
+/* ─── Container ──────────────────────────────────────────────── */
+.container-premium {
+  width: 100%;
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (min-width: 768px) {
+  .container-premium {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-premium {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* ─── Image Overlays ─────────────────────────────────────────── */
+.overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25) 0%,
+    rgba(0,0,0,0.55) 100%
+  );
+}
+
+.overlay-dark-heavy {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+/* ─── Ken Burns ──────────────────────────────────────────────── */
+@keyframes kenBurns {
+  0%   { transform: scale(1.08); }
+  100% { transform: scale(1.0); }
+}
+
+.ken-burns {
+  animation: kenBurns 8s ease-out forwards;
+}
+
+/* ─── Clip Path Reveals ──────────────────────────────────────── */
+.clip-reveal-hidden {
+  clip-path: inset(0 100% 0 0);
+}
+
+/* ─── Focus States ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 3px;
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Form Inputs ────────────────────────────────────────────── */
+.input-premium {
+  width: 100%;
+  border: 0;
+  border-bottom: 1.5px solid #D0D0D0;
+  background: transparent;
+  padding: 1rem 0 0.75rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-charcoal);
+  transition: border-color 400ms ease;
+  outline: none;
+}
+
+.input-premium:focus {
+  border-color: var(--color-red);
+}
+
+.input-premium::placeholder {
+  color: #B0B0B0;
+  font-weight: 300;
+}
+
+textarea.input-premium {
+  resize: none;
+  min-height: 120px;
+}
+
+/* ─── Nav Link Hover Effect ──────────────────────────────────── */
+.nav-link {
+  position: relative;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 300ms ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-red);
+  transition: width 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ─── Button Premium ─────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-red);
+  color: white;
+  padding: 0.875rem 2.25rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 400ms ease, transform 400ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  background: var(--color-red-dark);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid currentColor;
+  padding: 0.875rem 2.25rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 400ms ease, color 400ms ease;
+}
+
+/* ─── Dividers ───────────────────────────────────────────────── */
+.divider-fine {
+  height: 1px;
+  background: rgba(0,0,0,0.08);
+}
+
+.divider-red {
+  height: 2px;
+  width: 3rem;
+  background: var(--color-red);
+}
