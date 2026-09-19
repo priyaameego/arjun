@@ -145,7 +145,7 @@ const AboutPage: React.FC = () => {
             </h2>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10 lg:gap-12 max-w-4xl mx-auto">
             {directors.map((director, i) => (
               <AnimatedSection key={director.id} delay={i * 120} className="group">
                 <div className="relative overflow-hidden">
